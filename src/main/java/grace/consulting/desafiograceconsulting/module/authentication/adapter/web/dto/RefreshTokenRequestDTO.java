@@ -1,4 +1,4 @@
-package com.br.module.login.domain.dto;
+package grace.consulting.desafiograceconsulting.module.authentication.adapter.web.dto;
 
 import lombok.Getter;
 

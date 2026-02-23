@@ -1,16 +1,15 @@
-package com.br.config.security;
+package grace.consulting.desafiograceconsulting.config.security;
 
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.security.Key;
 import java.time.Instant;
 import java.util.Date;
-
-import io.jsonwebtoken.security.Keys;
-import java.security.Key;
 
 @Slf4j
 @Service

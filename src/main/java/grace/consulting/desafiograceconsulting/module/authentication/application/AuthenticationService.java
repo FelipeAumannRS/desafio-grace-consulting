@@ -1,7 +1,7 @@
-package com.br.module.login.service;
+package grace.consulting.desafiograceconsulting.module.authentication.application;
 
-import com.br.config.security.TokenService;
-import com.br.module.login.domain.dto.LoginRequestDTO;
+import grace.consulting.desafiograceconsulting.config.security.TokenService;
+import grace.consulting.desafiograceconsulting.module.authentication.adapter.web.dto.LoginRequestDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
