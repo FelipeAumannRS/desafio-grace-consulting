@@ -15,22 +15,27 @@ services:
       - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
 
   db:
-    image: postgres:15
-    container_name: postgres_db
+    image: mysql:8.3
+    container_name: mysql_db
     environment:
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypassword
-      POSTGRES_DB: mydatabase
+      MYSQL_ROOT_PASSWORD: myrootpassword
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
     ports:
-      - "5432:5432"
+      - "3306:3306"
+    command: >
+      --default-authentication-plugin=mysql_native_password
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_0900_ai_ci
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - mysql_data:/var/lib/mysql
 
   app:
-    image: totvs-app
+    image: grace-consulting-app
     container_name: spring_boot_app
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/mydatabase
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/mydatabase?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
       SPRING_DATASOURCE_USERNAME: myuser
       SPRING_DATASOURCE_PASSWORD: mypassword
       SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
@@ -41,4 +46,4 @@ services:
       - "8080:8080"
 
 volumes:
-  postgres_data:
+  mysql_data:

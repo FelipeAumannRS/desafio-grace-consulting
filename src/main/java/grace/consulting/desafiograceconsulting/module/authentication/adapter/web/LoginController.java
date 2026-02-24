@@ -1,9 +1,9 @@
-package com.br.module.login.controller;
+package grace.consulting.desafiograceconsulting.module.authentication.adapter.web;
 
-import com.br.config.security.TokenService;
-import com.br.module.login.domain.dto.LoginRequestDTO;
-import com.br.module.login.domain.dto.RefreshTokenRequestDTO;
-import com.br.module.login.service.AuthenticationService;
+import grace.consulting.desafiograceconsulting.config.security.TokenService;
+import grace.consulting.desafiograceconsulting.module.authentication.adapter.web.dto.LoginRequestDTO;
+import grace.consulting.desafiograceconsulting.module.authentication.adapter.web.dto.RefreshTokenRequestDTO;
+import grace.consulting.desafiograceconsulting.module.authentication.application.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

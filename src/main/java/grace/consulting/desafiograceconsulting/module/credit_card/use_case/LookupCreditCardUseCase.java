@@ -1,4 +1,8 @@
 package grace.consulting.desafiograceconsulting.module.credit_card.use_case;
 
-public class LookupCreditCardUseCase {
+import java.util.Optional;
+import java.util.UUID;
+
+public interface LookupCreditCardUseCase {
+    Optional<UUID> findIdByFullNumber(String fullNumber);
 }

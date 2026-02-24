@@ -1,4 +1,4 @@
-package com.br.config.security;
+package grace.consulting.desafiograceconsulting.config.security;
 
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 
