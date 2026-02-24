@@ -1,7 +1,7 @@
 package grace.consulting.desafiograceconsulting.module.credit_card.adapter.out.jpa;
 
-import grace.consulting.desafiograceconsulting.module.credit_card.domain.CreditCard;
-import grace.consulting.desafiograceconsulting.module.credit_card.port.CreditCardGateway;
+import grace.consulting.desafiograceconsulting.module.credit_card.domain.Card;
+import grace.consulting.desafiograceconsulting.module.credit_card.port.CardGateway;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -10,17 +10,17 @@ import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
-public class CreditCardGatewayJpaAdapter implements CreditCardGateway {
+public class CreditCardGatewayJpaAdapter implements CardGateway {
 
     private final CreditCardRepository repository;
 
     @Override
     public Optional<UUID> findIdByNumberHash(String numberHash) {
-        return repository.findByNumberHash(numberHash).map(CreditCard::getId);
+        return repository.findByNumberHash(numberHash).map(Card::getId);
     }
 
     @Override
-    public CreditCard save(CreditCard creditCard) {
-        return repository.save(creditCard);
+    public Card save(Card card) {
+        return repository.save(card);
     }
 }

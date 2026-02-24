@@ -8,5 +8,5 @@ public class RegisterCreditCardRequest {
     private String fullNumber;
     private String fullName;
     private String cvv;
-    private String expiryMmYy;
+    private String expirationDate;
 }

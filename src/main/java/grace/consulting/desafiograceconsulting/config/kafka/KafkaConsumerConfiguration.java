@@ -1,7 +1,7 @@
 package grace.consulting.desafiograceconsulting.config.kafka;
 
 import grace.consulting.desafiograceconsulting.module.credit_card.adapter.out.jpa.CreditCardRepository;
-import grace.consulting.desafiograceconsulting.module.credit_card.domain.CreditCard;
+import grace.consulting.desafiograceconsulting.module.credit_card.domain.Card;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
@@ -14,24 +14,24 @@ public class KafkaConsumerConfiguration {
 
     private final CreditCardRepository creditCardRepository;
 
-    @KafkaListener(topics = "credit-card-notification", groupId = "totvs")
-    public void receiveNotification(CreditCard incomingCreditCard) {
-        if (incomingCreditCard == null || incomingCreditCard.getId() == null) return;
+    @KafkaListener(topics = "credit-card-notification", groupId = "grace-consulting")
+    public void receiveNotification(Card incomingCard) {
+        if (incomingCard == null || incomingCard.getId() == null) return;
 
-        creditCardRepository.findById(incomingCreditCard.getId())
-                .map(existing -> merge(existing, incomingCreditCard))
+        creditCardRepository.findById(incomingCard.getId())
+                .map(existing -> merge(existing, incomingCard))
                 .map(creditCardRepository::save)
                 .ifPresentOrElse(
                         saved -> log.info("CreditCard {} updated successfully", saved.getId()),
                         () -> {
-                            creditCardRepository.save(incomingCreditCard);
-                            log.info("CreditCard {} created successfully!", incomingCreditCard.getId());
+                            creditCardRepository.save(incomingCard);
+                            log.info("CreditCard {} created successfully!", incomingCard.getId());
                         }
                 );
     }
 
-    private CreditCard merge(CreditCard existing, CreditCard incoming) {
-        existing.setExpiryMmYy(incoming.getExpiryMmYy());
+    private Card merge(Card existing, Card incoming) {
+        existing.setExpirationDate(incoming.getExpirationDate());
         existing.setEncryptedFullName(incoming.getEncryptedFullName());
         existing.setEncryptedCvv(incoming.getEncryptedCvv());
         return existing;

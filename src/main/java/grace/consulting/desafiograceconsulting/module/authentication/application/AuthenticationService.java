@@ -21,9 +21,7 @@ public class AuthenticationService {
 
     public String authenticate(LoginRequestDTO loginRequest) {
         try {
-            Authentication authentication = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword())
-            );
+            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
             if (!authentication.isAuthenticated())
                 throw new BadCredentialsException("Invalid credentials");
