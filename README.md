@@ -28,7 +28,7 @@ Instead, it uses hashing and encryption to guarantee data safety.
 - Line-by-line ingestion (streamed)
 - Returns number of processed records
 
-### ✅ Secure Storage
+### ✅ Secure Storage asd asd s
 - Full card number → one-way HMAC hash
 - Card holder name + CVV → AES-GCM encryption
 - Only `last4` is stored in plain text

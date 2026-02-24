@@ -1,0 +1,241 @@
+{
+	"info": {
+		"_postman_id": "e83918a6-233e-4ffe-b2f7-384c2531dcdb",
+		"name": "desafio-grace-consulting",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16466848"
+	},
+	"item": [
+		{
+			"name": "login",
+			"item": [
+				{
+					"name": "Refresh token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refreshToken\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYSIsImlhdCI6MTc3MTkwOTk2OSwiZXhwIjoxNzcyNTE0NzY5fQ.G1e7lmYaZchttNKkSaNpKE_vD7BNiiBFCZxQypI1JOce_VZKDarxMBWaDJuvjVsQECKmfu6OXaGVz3u5B6O7Jw\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth/refresh",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"refresh"
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Generate token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"sa\",\n    \"password\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"login"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "card",
+			"item": [
+				{
+					"name": "Card txt",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYSIsImlhdCI6MTc3MTkxMzcwOSwiZXhwIjoxNzcxOTE0MzA5fQ.UkQHyXdoXAVb_xsHcF_pMZb1qmNz6M1zXX7CbGMBrpQiHYHpgEY7_6P2DWLrlWOzLOBGUHruUgy27eO0s_AunQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/felip/Desktop/Aaaa Downloaded projects/desafio-grace-consulting/cards.txt"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/card/import/txt",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"card",
+								"import",
+								"txt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register card",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYSIsImlhdCI6MTc3MTkxMzcwOSwiZXhwIjoxNzcxOTE0MzA5fQ.UkQHyXdoXAVb_xsHcF_pMZb1qmNz6M1zXX7CbGMBrpQiHYHpgEY7_6P2DWLrlWOzLOBGUHruUgy27eO0s_AunQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fullNumber\": \"5555555555554444\",\r\n  \"fullName\": \"Felipe Aumann\",\r\n  \"cvv\": \"456\",\r\n  \"expirationDate\": \"08/27\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/card",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"card"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Card lookup",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYSIsImlhdCI6MTc3MTkxMzcwOSwiZXhwIjoxNzcxOTE0MzA5fQ.UkQHyXdoXAVb_xsHcF_pMZb1qmNz6M1zXX7CbGMBrpQiHYHpgEY7_6P2DWLrlWOzLOBGUHruUgy27eO0s_AunQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/card/lookup?fullNumber=4111111111111111",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"card",
+								"lookup"
+							],
+							"query": [
+								{
+									"key": "fullNumber",
+									"value": "4111111111111111"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

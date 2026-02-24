@@ -1,0 +1,3 @@
+{"fullNumber":"4111111111111111","fullName":"Felipe Aumann","cvv":"123","expirationDate":"12/28"}
+{"fullNumber":"5555555555554444","fullName":"Maria Silva","cvv":"456","expirationDate":"08/27"}
+{"fullNumber":"378282246310005","fullName":"Joao Pereira","cvv":"789","expirationDate":"11/29"}
